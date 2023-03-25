@@ -2,12 +2,11 @@ package com.dhkpo.algorithm.dijkstra
 
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
-import java.util.LinkedList
 import java.util.PriorityQueue
 
 
-fun removeEdges(node: Int, trace: MutableMap<Int, LinkedList<Int>>, checked: Array<BooleanArray>) {
-    val parents: LinkedList<Int>? = trace[node]
+fun removeEdges(node: Int, trace: MutableMap<Int, HashSet<Int>>, checked: Array<BooleanArray>) {
+    val parents: HashSet<Int>? = trace[node]
     if (parents.isNullOrEmpty()) {
         return
     }
@@ -21,13 +20,13 @@ fun removeEdges(node: Int, trace: MutableMap<Int, LinkedList<Int>>, checked: Arr
 fun dijkstra(
     s: Int,
     dist: MutableMap<Int, Int>,
-    mapping: ArrayList<ArrayList<Pair<Int, Int>>>,
-    trace: MutableMap<Int, LinkedList<Int>>,
+    mapping: Array<MutableList<Pair<Int, Int>>>,
+    trace: MutableMap<Int, HashSet<Int>>,
     checked: Array<BooleanArray>
 ) {
     dist[s] = 0
 
-    val queue = PriorityQueue<Pair<Int, Int>>(compareBy { it.first })
+    val queue = PriorityQueue<Pair<Int, Int>>(compareByDescending { it.first })
     queue.add(dist[s]!! to s)
 
     while (queue.isNotEmpty()) {
@@ -46,8 +45,8 @@ fun dijkstra(
                         dist[nextValue] = dist[currValue]!! + nextDist
                         trace[nextValue]!!.clear()
                         trace[nextValue]!!.add(currValue)
+                        queue.add(dist[nextValue]!! to nextValue)
                     }
-                    queue.add(dist[nextValue]!! to nextValue)
                 }
             }
         }
@@ -56,6 +55,8 @@ fun dijkstra(
 
 
 fun main(args: Array<String>) {
+    val distanceMax = Integer.MAX_VALUE
+
     val bw = BufferedWriter(OutputStreamWriter(System.out))
 
     while (true) {
@@ -65,14 +66,12 @@ fun main(args: Array<String>) {
         }
         val (s: Int, d: Int) = readln().split(" ").map { it.toInt() }
 
-        val adj = Array(n) { ArrayList<Pair<Int, Int>>() }.toCollection(ArrayList())
-        val trace = HashMap<Int, LinkedList<Int>>()
-        val checked = Array(n) { _ -> BooleanArray(n) { false } }
+        val adj = Array(n) { mutableListOf<Pair<Int, Int>>() }
+        val trace = HashMap<Int, HashSet<Int>>()
+        val checked = Array(n) { BooleanArray(n) }
 
         val distForwardShortest = HashMap<Int, Int>()
         val distAlmostShortest = HashMap<Int, Int>()
-
-        val distanceMax = Integer.MAX_VALUE
 
         repeat(m) {
             val (u: Int, v: Int, p: Int) = readln().split(" ").map { it.toInt() }
@@ -82,7 +81,7 @@ fun main(args: Array<String>) {
         repeat(n) {
             distForwardShortest[it] = distanceMax
             distAlmostShortest[it] = distanceMax
-            trace[it] = LinkedList<Int>()
+            trace[it] = HashSet()
         }
 
         dijkstra(s, distForwardShortest, adj, trace, checked)
