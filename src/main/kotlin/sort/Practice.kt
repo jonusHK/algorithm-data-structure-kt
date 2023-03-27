@@ -1,4 +1,4 @@
-package com.dhkpo.algorithm.sort
+package sort
 
 import java.util.PriorityQueue
 

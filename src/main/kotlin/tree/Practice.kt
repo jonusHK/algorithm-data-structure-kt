@@ -1,4 +1,4 @@
-package com.dhkpo.algorithm.tree
+package tree
 
 import kotlin.math.max
 import kotlin.math.min

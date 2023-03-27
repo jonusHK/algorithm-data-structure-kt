@@ -1,4 +1,4 @@
-package com.dhkpo.algorithm.dijkstra
+package dijkstra
 
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter

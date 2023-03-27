@@ -1,4 +1,4 @@
-package com.dhkpo.algorithm.greedy
+package greedy
 
 
 fun main(args: Array<String>) {
