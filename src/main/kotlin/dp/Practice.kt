@@ -1,4 +1,9 @@
+package dp
+
 import java.lang.Integer.max
+
+
+/* 백준 - 가장높은탑쌓기 */
 
 data class MultiComponent(
     val index: Int,
@@ -6,7 +11,6 @@ data class MultiComponent(
     val height: Int,
     val weight: Int
 )
-
 
 fun main(args: Array<String>) {
     val n = readln().toInt()
