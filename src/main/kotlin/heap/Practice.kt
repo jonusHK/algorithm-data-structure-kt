@@ -3,6 +3,8 @@ package heap
 import java.util.PriorityQueue
 import kotlin.math.pow
 
+
+// 백준 - 소수의 곱
 fun main(args: Array<String>) {
     val queue = PriorityQueue<Long>()
 
