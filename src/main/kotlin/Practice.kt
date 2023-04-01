@@ -1,3 +1,5 @@
+/* 프로그래머스 - N으로 표현 */
+
 fun calc(a: HashSet<Int>, b: HashSet<Int>) = sequence {
     a.forEach { x ->
         b.forEach { y ->
