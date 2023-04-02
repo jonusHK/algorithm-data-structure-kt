@@ -1,4 +1,4 @@
-package dijkstra
+package dijkstra.`2`
 
 import java.lang.Integer.max
 import java.util.PriorityQueue

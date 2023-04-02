@@ -1,4 +1,4 @@
-package sort
+package sort.`1`
 
 import java.util.PriorityQueue
 
