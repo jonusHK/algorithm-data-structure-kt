@@ -1,4 +1,4 @@
-package heap
+package heap.`1`
 
 import java.util.PriorityQueue
 import kotlin.math.pow

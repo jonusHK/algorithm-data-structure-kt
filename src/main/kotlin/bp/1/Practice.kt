@@ -1,6 +1,6 @@
 /* 프로그래머스 - 피로도 */
 
-package bp.first
+package bp.`1`
 
 import java.lang.Integer.max
 

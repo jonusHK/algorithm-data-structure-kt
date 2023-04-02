@@ -1,4 +1,4 @@
-package tree
+package tree.`1`
 
 import kotlin.math.max
 import kotlin.math.min

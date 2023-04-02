@@ -1,4 +1,4 @@
-package dijkstra
+package dijkstra.`1`
 
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter

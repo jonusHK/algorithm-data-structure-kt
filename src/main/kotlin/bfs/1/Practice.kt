@@ -1,4 +1,4 @@
-package bfs
+package bfs.`1`
 
 import java.lang.Integer.max
 
